@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eBay時計輸出で扱う 国内ブランド早わかり辞典 | SUN SPIRITS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  color: #151515;
+  background: #f5f1e7;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+.hero {
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(8, 18, 32, 0.94), rgba(13, 27, 42, 0.86)),
+    radial-gradient(ellipse at 78% 18%, rgba(201, 168, 76, 0.24), transparent 34%),
+    #0d1b2a;
+  padding: 34px 22px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "DOMESTIC";
+  position: absolute;
+  right: -18px;
+  bottom: -36px;
+  color: rgba(255, 255, 255, 0.04);
+  font-size: clamp(4rem, 14vw, 11rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  pointer-events: none;
+}
+.wrap {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 54px;
+}
+.brand {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(201, 168, 76, 0.5);
+  color: #fff;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #d9bd5a;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  margin-bottom: 14px;
+}
+.eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d9bd5a);
+}
+h1 {
+  max-width: 760px;
+  font-size: clamp(2rem, 5vw, 4.15rem);
+  line-height: 1.16;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+.lead {
+  max-width: 690px;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.92rem, 1.5vw, 1.08rem);
+  font-weight: 500;
+}
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+  max-width: 760px;
+}
+.meta-card {
+  min-height: 82px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.055);
+}
+.meta-card strong {
+  display: block;
+  color: #d9bd5a;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  font-weight: 900;
+}
+.meta-card span {
+  display: block;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.main {
+  padding: 46px 22px 72px;
+}
+.intro-panel {
+  margin-top: -82px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 22px 60px rgba(13, 27, 42, 0.16);
+  overflow: hidden;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+.intro-copy {
+  padding: 28px 30px;
+}
+.section-label {
+  display: inline-block;
+  color: #b8943f;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  margin-bottom: 10px;
+}
+.intro-copy h2 {
+  font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+  line-height: 1.5;
+  font-weight: 900;
+}
+.intro-copy p {
+  margin-top: 10px;
+  color: #555;
+  font-size: 0.92rem;
+}
+.intro-points {
+  display: grid;
+  align-content: stretch;
+  background: #0d1b2a;
+}
+.intro-point {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 18px 22px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.intro-point:last-child { border-bottom: 0; }
+.intro-point b {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #0d1b2a;
+  background: linear-gradient(135deg, #e2c965, #b8943f);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+.intro-point span {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.section {
+  margin-top: 36px;
+}
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+.section-head h2 {
+  color: #0d1b2a;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.45;
+  font-weight: 900;
+}
+.section-head p {
+  max-width: 440px;
+  color: #6c6354;
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.quick-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(13, 27, 42, 0.08);
+}
+.quick-table th,
+.quick-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid #ebe4d5;
+  text-align: left;
+  vertical-align: top;
+}
+.quick-table th {
+  color: #fff;
+  background: #0d1b2a;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+.quick-table td {
+  color: #3f3a31;
+  font-size: 0.84rem;
+  font-weight: 500;
+}
+.quick-table tr:last-child td { border-bottom: 0; }
+.maker-name {
+  color: #0d1b2a;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.tag {
+  display: inline-block;
+  margin: 0 5px 5px 0;
+  padding: 3px 7px;
+  border-radius: 4px;
+  color: #745916;
+  background: #f4e6b5;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.brand-card {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(13, 27, 42, 0.08);
+  overflow: hidden;
+}
+.brand-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 74px;
+  padding: 18px 20px;
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(13, 27, 42, 0.96), rgba(20, 38, 62, 0.92)),
+    #0d1b2a;
+}
+.brand-card-header h3 {
+  font-size: 1.08rem;
+  line-height: 1.45;
+  font-weight: 900;
+}
+.brand-card-header span {
+  flex: 0 0 auto;
+  color: #d9bd5a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+.brand-card-body {
+  padding: 18px 20px 20px;
+}
+.brand-card-body p {
+  color: #575149;
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+.mini-title {
+  margin: 14px 0 8px;
+  color: #0d1b2a;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+.list {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+.list li {
+  position: relative;
+  padding-left: 18px;
+  color: #3f3a31;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.74em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c0392b;
+}
+
+.strategy {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 16px;
+}
+.strategy-card {
+  border-radius: 8px;
+  padding: 22px;
+  background: #0d1b2a;
+  color: #fff;
+  box-shadow: 0 14px 40px rgba(13, 27, 42, 0.1);
+}
+.strategy-card h3 {
+  color: #d9bd5a;
+  font-size: 1.05rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.strategy-card p,
+.strategy-card li {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+.check-card {
+  border-radius: 8px;
+  padding: 22px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(13, 27, 42, 0.08);
+}
+.check-card h3 {
+  color: #0d1b2a;
+  font-size: 1.05rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.check-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+}
+.check-list li {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #ece3d2;
+  border-radius: 6px;
+  color: #3f3a31;
+  background: #fbf8f1;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+.check-list li::before {
+  content: "✓";
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #0d1b2a;
+  background: #d9bd5a;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.cta {
+  margin-top: 42px;
+  padding: 28px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(192, 57, 43, 0.96), rgba(151, 38, 29, 0.96)),
+    #c0392b;
+  box-shadow: 0 20px 52px rgba(192, 57, 43, 0.22);
+}
+.cta h2 {
+  font-size: clamp(1.25rem, 2.7vw, 1.9rem);
+  line-height: 1.45;
+  font-weight: 900;
+}
+.cta p {
+  margin: 10px auto 20px;
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: #fff;
+  color: #97261d;
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+.cta-button.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.footer {
+  padding: 24px 22px 34px;
+  color: rgba(255, 255, 255, 0.5);
+  background: #07101d;
+  text-align: center;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 860px) {
+  .hero { padding-top: 24px; }
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 36px;
+  }
+  .nav-link { width: 100%; }
+  .hero-meta,
+  .intro-grid,
+  .brand-grid,
+  .strategy,
+  .check-list {
+    grid-template-columns: 1fr;
+  }
+  .intro-panel { margin-top: -64px; }
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .quick-table,
+  .quick-table tbody,
+  .quick-table tr,
+  .quick-table td {
+    display: block;
+    width: 100%;
+  }
+  .quick-table thead { display: none; }
+  .quick-table tr {
+    border-bottom: 1px solid #ebe4d5;
+  }
+  .quick-table td {
+    border-bottom: 0;
+    padding: 12px 16px;
+  }
+  .quick-table td::before {
+    content: attr(data-label);
+    display: block;
+    color: #9b7b2f;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+}
+@media (max-width: 560px) {
+  .hero { padding-left: 16px; padding-right: 16px; }
+  .main { padding-left: 16px; padding-right: 16px; }
+  .hero-meta { gap: 8px; }
+  .meta-card { min-height: 72px; padding: 12px; }
+  .intro-copy,
+  .brand-card-body,
+  .strategy-card,
+  .check-card,
+  .cta { padding: 18px; }
+  .brand-card-header { padding: 16px 18px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">SUN SPIRITS / TOKUTEN 01</div>
+      <a class="nav-link" href="./tokuten.html">特典一覧へ戻る</a>
+    </div>
+    <div class="eyebrow">DOMESTIC BRAND GUIDE</div>
+    <h1>eBay時計輸出で扱う<br>国内ブランド早わかり辞典</h1>
+    <p class="lead">日本メーカーの特徴、型番の見方、eBayで見るときの狙いどころを、初心者でも迷わないように整理した入門資料です。</p>
+    <div class="hero-meta" aria-label="この特典でわかること">
+      <div class="meta-card"><strong>6</strong><span>国内メーカー系統</span></div>
+      <div class="meta-card"><strong>3</strong><span>仕入れ判断ポイント</span></div>
+      <div class="meta-card"><strong>1</strong><span>出品前チェック表</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="wrap">
+    <section class="intro-panel" aria-labelledby="intro-title">
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <span class="section-label">FIRST STEP</span>
+          <h2 id="intro-title">まずは「どのメーカーを、どう見るか」を決める。</h2>
+          <p>時計輸出では、ブランド名だけで判断すると仕入れ価格が高くなりがちです。メーカーごとの型番、製品ライン、海外で伝わりやすい特徴を押さえることで、リサーチの精度が上がります。</p>
+        </div>
+        <div class="intro-points">
+          <div class="intro-point"><b>1</b><span>型番が追えるメーカーは、相場比較と商品説明が作りやすい。</span></div>
+          <div class="intro-point"><b>2</b><span>60〜90年代のビンテージは、現行品より需要を拾いやすい傾向。</span></div>
+          <div class="intro-point"><b>3</b><span>保証書・真贋・状態説明は、時計ジャンルでは特に重要。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="quick-title">
+      <div class="section-head">
+        <div>
+          <span class="section-label">QUICK LOOK</span>
+          <h2 id="quick-title">国内メーカー早見表</h2>
+        </div>
+        <p>最初は「型番が追えるか」「海外に伝わる強みがあるか」「注意すべき個体差があるか」の3点で見ます。</p>
+      </div>
+      <table class="quick-table">
+        <thead>
+          <tr>
+            <th>メーカー</th>
+            <th>主なライン</th>
+            <th>型番・識別の見方</th>
+            <th>eBayでの狙いどころ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="メーカー"><span class="maker-name">SEIKO</span></td>
+            <td data-label="主なライン"><span class="tag">PROSPEX</span><span class="tag">PRESAGE</span><span class="tag">ASTRON</span></td>
+            <td data-label="型番・識別">裏蓋の「4桁-4桁」型番を軸に検索。シリアルは製造国や個体で差が出る。</td>
+            <td data-label="狙いどころ">知名度が高く、型番検索しやすい。ダイバー、機械式、ビンテージ系は説明を作りやすい。</td>
+          </tr>
+          <tr>
+            <td data-label="メーカー"><span class="maker-name">KING SEIKO</span></td>
+            <td data-label="主なライン"><span class="tag">44KS</span><span class="tag">45クロノメーター</span><span class="tag">56 VANAC</span></td>
+            <td data-label="型番・識別">1975年に生産終了。モデル数は多くないため、世代別の特徴確認が重要。</td>
+            <td data-label="狙いどころ">国産高級機械式の文脈で訴求しやすい。GRAND SEIKOより入口価格を作りやすい。</td>
+          </tr>
+          <tr>
+            <td data-label="メーカー"><span class="maker-name">GRAND SEIKO</span></td>
+            <td data-label="主なライン"><span class="tag">Masterpiece</span><span class="tag">Sports</span></td>
+            <td data-label="型番・識別">型番は「S○G○+数字3桁」系。メンズ/レディースの違いも確認。</td>
+            <td data-label="狙いどころ">高級実用時計として信頼が強い。単価は上がるが仕入れ値も上がりやすい。</td>
+          </tr>
+          <tr>
+            <td data-label="メーカー"><span class="maker-name">CREDOR</span></td>
+            <td data-label="主なライン"><span class="tag">SIGNO</span><span class="tag">Linealx</span><span class="tag">Masterpiece</span></td>
+            <td data-label="型番・識別">型番は英数字中心で統一感は弱い。頭文字「G」が共通しやすい。</td>
+            <td data-label="狙いどころ">宝飾・貴金属・高級感を訴求できる。素材確認と状態説明が重要。</td>
+          </tr>
+          <tr>
+            <td data-label="メーカー"><span class="maker-name">CITIZEN</span></td>
+            <td data-label="主なライン"><span class="tag">The CITIZEN</span><span class="tag">PROMASTER</span><span class="tag">Eco-Drive One</span></td>
+            <td data-label="型番・識別">裏蓋の「4桁-6桁以上」型番を確認。公式製品情報でも照合可能。</td>
+            <td data-label="狙いどころ">実用性・信頼性で見せやすい。PROMASTERなど機能訴求の強いラインに注目。</td>
+          </tr>
+          <tr>
+            <td data-label="メーカー"><span class="maker-name">CASIO</span></td>
+            <td data-label="主なライン"><span class="tag">G-SHOCK</span><span class="tag">OCEANUS</span><span class="tag">PRO TREK</span></td>
+            <td data-label="型番・識別">英数字型番でカテゴリー、シリーズ、カラー、仕様を判別する。</td>
+            <td data-label="狙いどころ">海外認知が強い。G-SHOCK系は型番違い・カラー違いの確認が勝負。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" aria-labelledby="maker-title">
+      <div class="section-head">
+        <div>
+          <span class="section-label">MAKER NOTES</span>
+          <h2 id="maker-title">メーカー別の特徴と見るポイント</h2>
+        </div>
+        <p>各メーカーを、仕入れ前に確認する観点へ落とし込みました。</p>
+      </div>
+      <div class="brand-grid">
+        <article class="brand-card">
+          <div class="brand-card-header"><h3>SEIKO / セイコー</h3><span>ENTRY</span></div>
+          <div class="brand-card-body">
+            <p>日本を代表する腕時計メーカー。型番が裏蓋に記載されることが多く、相場検索と商品説明を組み立てやすいのが強みです。</p>
+            <div class="mini-title">見るポイント</div>
+            <ul class="list">
+              <li>裏蓋の4桁-4桁型番を必ず確認する</li>
+              <li>PROSPEX、PRESAGE、ASTRONなどライン名で整理する</li>
+              <li>シリアル番号は製造国や個体差の確認材料にする</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="brand-card">
+          <div class="brand-card-header"><h3>KING SEIKO / キング セイコー</h3><span>VINTAGE</span></div>
+          <div class="brand-card-body">
+            <p>国産機械式腕時計の進化を支えた高級ライン。生産終了モデルが中心のため、世代・モデル名・状態の説明が価値になります。</p>
+            <div class="mini-title">見るポイント</div>
+            <ul class="list">
+              <li>44KS、45系、56 VANACなどモデル系統を確認する</li>
+              <li>ハイビート機は機械状態とメンテナンス履歴を見る</li>
+              <li>ヴィンテージ文脈で、年式と希少性を説明する</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="brand-card">
+          <div class="brand-card-header"><h3>GRAND SEIKO / グランド セイコー</h3><span>PREMIUM</span></div>
+          <div class="brand-card-body">
+            <p>高級実用時計として海外でも評価されるブランド。単価は高くなりますが、その分、真贋・状態・付属品の重要度も上がります。</p>
+            <div class="mini-title">見るポイント</div>
+            <ul class="list">
+              <li>Sから始まる型番構成を確認する</li>
+              <li>メンズ/レディース、ケースサイズを間違えない</li>
+              <li>保証書、箱、整備履歴の有無を重視する</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="brand-card">
+          <div class="brand-card-header"><h3>CREDOR / クレドール</h3><span>LUXURY</span></div>
+          <div class="brand-card-body">
+            <p>宝飾腕時計として、素材・デザイン・仕上げの訴求がしやすいライン。型番だけでなく、素材表記と外装状態の確認が重要です。</p>
+            <div class="mini-title">見るポイント</div>
+            <ul class="list">
+              <li>型番の頭文字Gを手がかりに照合する</li>
+              <li>金、プラチナなど素材表記を確認する</li>
+              <li>薄型、ドレス系、宝飾性を商品説明で伝える</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="brand-card">
+          <div class="brand-card-header"><h3>CITIZEN / シチズン</h3><span>FUNCTION</span></div>
+          <div class="brand-card-body">
+            <p>世界的な生産力と実用性が強み。PROMASTERのように、用途や機能がはっきりしたラインは海外向け説明を作りやすいです。</p>
+            <div class="mini-title">見るポイント</div>
+            <ul class="list">
+              <li>裏蓋の4桁-6桁以上の型番を確認する</li>
+              <li>公式製品情報で仕様を照合する</li>
+              <li>ソーラー系は需要と状態を慎重に見る</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="brand-card">
+          <div class="brand-card-header"><h3>CASIO / カシオ</h3><span>POPULAR</span></div>
+          <div class="brand-card-body">
+            <p>G-SHOCKを中心に海外認知が高いメーカー。カラー、限定性、仕様違いで相場が変わりやすいため、型番確認が重要です。</p>
+            <div class="mini-title">見るポイント</div>
+            <ul class="list">
+              <li>型番でシリーズ、色、仕様を切り分ける</li>
+              <li>G-SHOCK、OCEANUS、PRO TREKをライン別に見る</li>
+              <li>低単価になりすぎる個体は利益幅に注意する</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="strategy-title">
+      <div class="section-head">
+        <div>
+          <span class="section-label">SELLING STRATEGY</span>
+          <h2 id="strategy-title">eBay販売で押さえる共通ルール</h2>
+        </div>
+      </div>
+      <div class="strategy">
+        <div class="strategy-card">
+          <h3>狙いやすい方向性</h3>
+          <ul class="list">
+            <li>レディースよりメンズの方が売れ行きは良い傾向</li>
+            <li>現行モデルより60〜90年代のビンテージ時計に需要が出やすい</li>
+            <li>クオーツ式・自動巻き式を主軸に見る</li>
+            <li>購入者はUS、ユーロ圏が中心。特にユーロ圏は問い合わせが多い傾向</li>
+          </ul>
+        </div>
+        <div class="check-card">
+          <h3>出品前チェックリスト</h3>
+          <ul class="check-list">
+            <li>型番が商品説明に入っている</li>
+            <li>ケース幅・腕周りを測っている</li>
+            <li>稼働方式を確認している</li>
+            <li>保証書・箱・付属品の有無を明記</li>
+            <li>ラグ幅やロゴなど真贋ポイントを確認</li>
+            <li>季節性のあるモデルを考慮</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="next-title">
+      <h2 id="next-title">次は、海外ブランド早わかり辞典へ。</h2>
+      <p>国内ブランドの型番・ラインの見方を押さえたら、次はROLEX、OMEGA、TAG Heuerなど海外ブランド側の特徴を整理します。</p>
+      <div class="cta-actions">
+        <a class="cta-button" href="./tokuten.html">特典一覧へ戻る</a>
+        <a class="cta-button secondary" href="./tokuten-02.html">次の特典を見る</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  &copy; SUN Co., Ltd. All Rights Reserved.
+</footer>
+</body>
+</html>
